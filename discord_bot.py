@@ -47,11 +47,6 @@ async def read_message_history():
     
     await channel.send('Records are up to date.')
 
-
-@bot.command(name='update')
-async def update(ctx):
-    await read_message_history()
-
 @bot.event
 async def on_ready():
     print(f"{bot.user} is ready and online!")
@@ -59,7 +54,6 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    await bot.process_commands(message)
     if valid_message(message):
         await process_record(message)
 
